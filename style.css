@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100lvw;
+  height: 100lvh;
+  background-color: #ccc;
+}
+.container,
+#game-window {
+
+  background: url("./imgs/background.jpg") center/cover no-repeat;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container h1 {
+  color: rgb(255, 255, 255);
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+.container h1 span {
+  color: rgb(1, 255, 158);
+}
+
+#box {
+  backdrop-filter: blur(1px);
+  background-color: #0000005c;
+  color: #acabab;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 70%;
+  height: 50%;
+  font-size: 1.3rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 700;
+}
+#cursor {
+  position: absolute;
+  display: inline-block;
+  min-width: 1.7px;
+  height: 25px;
+  background-color: #fff;
+  transition: 0.23s;
+  margin-left: 0;
+}
+.letter {
+  margin-inline: 1px;
+}
+.menu {
+  position: absolute;
+  background-color: #59555520;
+  backdrop-filter: blur(1px);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.533);
+  color: #fff;
+  border-radius: 15px;
+  width: 400px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: all 0.5s;
+  padding: 2rem;
+}
+.menu-items {
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 100%;
+  transition: 0.3s;
+  padding: 0.2rem 2rem;
+  text-align: center;
+  text-shadow: 0 0 5px #000000;
+}
+.menu-items:hover {
+  color: rgb(255, 102, 0);
+  border: 1px solid #000;
+  transform: scale(1.08);
+  text-shadow: 0 0 1px #000000;
+}
+.menu h1 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  font-weight: bolder;
+  text-shadow: 0 0 10px #000;
+  color: rgb(255, 102, 0);
+  position: relative;
+  top: -3rem;
+}
+
+.menu h3 {
+  margin: 1rem 0;
+  font-size: 2rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  text-transform: capitalize;
+}
+
+#game-window {
+  display: none;
+}
+.game-details {
+  display: inline-block;
+  position: absolute;
+  right: 15rem;
+}
+.game-details .bar {
+  cursor: pointer;
+  color: #9a9a9a;
+  min-width: 20px;
+  min-height: 20px;
+  padding: 1rem;
+  font-size: 1.4rem;
+}
+#exit:hover {
+  color: red;
+}
