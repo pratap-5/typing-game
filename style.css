@@ -10,7 +10,6 @@ body {
 }
 .container,
 #game-window {
-
   background: url("./imgs/background.jpg") center/cover no-repeat;
   width: 100%;
   height: 100%;
@@ -19,6 +18,7 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  padding: 0 1rem;
 }
 
 .container h1 {
@@ -41,6 +41,7 @@ body {
   font-size: 1.3rem;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 700;
+  overflow: auto;
 }
 #cursor {
   position: absolute;
@@ -67,8 +68,10 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transition: all 0.5s;
+  flex-wrap: wrap;
   padding: 2rem;
+  overflow: hidden;
+  transition: all 0.5s;
 }
 .menu-items {
   position: relative;
@@ -108,10 +111,11 @@ body {
 #game-window {
   display: none;
 }
+
 .game-details {
   display: inline-block;
-  position: absolute;
-  right: 15rem;
+  position: relative;
+  right: 0;
 }
 .game-details .bar {
   cursor: pointer;
@@ -123,4 +127,33 @@ body {
 }
 #exit:hover {
   color: red;
+}
+
+/* ---------------------for responsive---------------------- */
+
+@media only screen and (max-width: 950px) {
+  #box {
+    width: 100%;
+  }
+  .menu {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  #box {
+    height: 100%;
+  }
+
+  .menu h3 {
+    font-size: 1.3rem;
+  }
+  .menu h1 {
+    font-size: 2.4rem;
+  }
+  .container {
+    padding: 0.7rem;
+  }
+  .container h1 {
+    font-size: 1.7rem;
+  }
 }

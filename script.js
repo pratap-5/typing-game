@@ -33,7 +33,6 @@ let getWords = () => {
 //this method check the letter with input letter
 checkLetter = (inputLetter) => {
   let spans = document.querySelectorAll(".letter");
-  console.log(` typed ${typedWords}`);
 
   if (ind < sentence.length - 1 || inputLetter === "Backspace") {
     let currentLetter = sentence.charAt(ind + 1);
@@ -84,12 +83,11 @@ let updateCursorPosition = () => {
 addEventListener("keyup", (event) => {
   inputLetter = event.key;
 
-  if (isGameStart) {
-    if (count < 1) {
-      count++;
-      timer();
-    }
+  if (isGameStart && count < 1) {
+    count++;
+    timer();
   }
+
   if (
     inputLetter !== "Shift" &&
     inputLetter !== "Control" &&
@@ -132,36 +130,35 @@ let gameOver = () => {
   let text3 = document.getElementById("text3");
 
   getResults();
+
   menu.style.display = "flex";
   gameWindow.style.display = "none";
   heading.innerText = "Game over";
   text1.innerText = `play again`;
   text2.innerText = `wpm:${wpm}`;
-  text3.innerText = `accuracy:${accuracy}`;
+  text3.innerText = `accuracy:${((accuracy / wpm) * 100).toFixed(2)}%`;
 
   accuracy = 0;
   wpm = 0;
   typedWords = "";
   writtenWord = [];
   actualWord = [];
-  // text2.setAttribute("id", "new");
-  // text3.setAttribute("id", "new1");
+  text2.onclick = null;
+  text3.onclick = null;
 };
-
-//this method for restarting the game
-let gameRestart = () => {};
 
 //this method count the second
 let timer = () => {
-  let sec = 30;
   let timeShow = document.getElementById("timer");
+  let sec = 30;
+  timeShow.innerText =`${sec}s`;
   let id = setInterval(() => {
+    sec--; 
     timeShow.innerText = `${sec}s`;
     if (sec == 0) {
       clearInterval(id);
       gameOver();
     }
-    sec--;
   }, 1000);
 };
 
@@ -172,7 +169,6 @@ let getResults = () => {
   }
   actualWord = words.split(" ");
   writtenWord = typedWords.split(" ");
-  console.log(actualWord, " ", writtenWord);
 
   for (let i = 0; i < writtenWord.length; i++) {
     if (actualWord[i] === writtenWord[i] && writtenWord[i] != " ") {
@@ -183,5 +179,4 @@ let getResults = () => {
     actualWord[actualWord.length - 1].length > 1
       ? actualWord.length
       : actualWord.length - 1;
-  console.log(accuracy, wpm);
 };
