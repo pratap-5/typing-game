@@ -179,4 +179,6 @@ let getResults = () => {
     actualWord[actualWord.length - 1].length > 1
       ? actualWord.length
       : actualWord.length - 1;
+
+  if (accuracy > wpm) accuracy = wpm;
 };
