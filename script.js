@@ -40,10 +40,11 @@ checkLetter = (inputLetter) => {
 
     if (inputLetter === "Backspace") {
       if (ind >= 0) {
-        ind--;
-        typedWords =typedWords.slice(0,ind);
-        updateCursorPosition();
         spans[ind].style.color = "#acabab";
+        typedWords = typedWords.slice(0, ind);
+        
+        ind--;
+        updateCursorPosition();// it will place after ind--
       }
     } else if (currentLetter === inputLetter) {
       ind++;
@@ -138,7 +139,6 @@ let gameOver = () => {
   text2.innerText = `wpm:${wpm}`;
   text3.innerText = `accuracy:${accuracy}`;
 
-  
   accuracy = 0;
   wpm = 0;
   typedWords = "";
