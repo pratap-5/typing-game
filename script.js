@@ -42,9 +42,9 @@ checkLetter = (inputLetter) => {
       if (ind >= 0) {
         spans[ind].style.color = "#acabab";
         typedWords = typedWords.slice(0, ind);
-        
+
         ind--;
-        updateCursorPosition();// it will place after ind--
+        updateCursorPosition(); // it will place after ind--
       }
     } else if (currentLetter === inputLetter) {
       ind++;
@@ -144,8 +144,8 @@ let gameOver = () => {
   typedWords = "";
   writtenWord = [];
   actualWord = [];
-  text2.setAttribute("id", "new");
-  text3.setAttribute("id", "new1");
+  // text2.setAttribute("id", "new");
+  // text3.setAttribute("id", "new1");
 };
 
 //this method for restarting the game
@@ -185,7 +185,3 @@ let getResults = () => {
       : actualWord.length - 1;
   console.log(accuracy, wpm);
 };
-
-document.addEventListener("DOMContentLoaded", (event) => {
-  document.getElementById("text1").addEventListener("click", gameStart);
-});
