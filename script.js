@@ -40,12 +40,13 @@ checkLetter = (inputLetter) => {
 
     if (inputLetter === "Backspace") {
       if (ind >= 0) {
-        spans[ind].style.color = "#acabab";
         ind--;
+        typedWords =typedWords.slice(0,ind);
+        updateCursorPosition();
+        spans[ind].style.color = "#acabab";
       }
     } else if (currentLetter === inputLetter) {
       ind++;
-
       typedWords += inputLetter;
 
       updateCursorPosition();
