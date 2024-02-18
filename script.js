@@ -136,7 +136,7 @@ let gameOver = () => {
   heading.innerText = "Game over";
   text1.innerText = `play again`;
   text2.innerText = `wpm:${wpm}`;
-  text3.innerText = `accuracy:${((accuracy / wpm) * 100).toFixed(2)}%`;
+  text3.innerText = `accuracy:${((accuracy / wpm) * 100).toFixed(1)}%`;
 
   accuracy = 0;
   wpm = 0;
@@ -151,9 +151,9 @@ let gameOver = () => {
 let timer = () => {
   let timeShow = document.getElementById("timer");
   let sec = 30;
-  timeShow.innerText =`${sec}s`;
+  timeShow.innerText = `${sec}s`;
   let id = setInterval(() => {
-    sec--; 
+    sec--;
     timeShow.innerText = `${sec}s`;
     if (sec == 0) {
       clearInterval(id);
