@@ -15,6 +15,10 @@ let sentences = [
   "People from all walks of life come to this serene retreat to escape the stresses of everyday life. Some come to meditate and find inner peace, while others simply come to admire the natural beauty that surrounds them. Children laugh and play freely, their carefree spirits adding to the joyful atmosphere.",
 
   "As the sun sets on the horizon, painting the sky in hues of pink and orange, a sense of calm washes over the landscape. The city's hustle and bustle fade away, replaced by a serene stillness that envelops everything in its embrace. In this tranquil haven, all worries and troubles seem to melt away, leaving only a sense of profound peace and contentment.",
+
+  "Once upon a time, in a faraway kingdom, there lived a young princess named Lily. She had a kind heart and a curious spirit. One day, while exploring the enchanted forest near the castle, Lily stumbled upon a hidden pathway. Intrigued, she followed it deeper into the woods, where she discovered a magical garden filled with vibrant flowers and sparkling butterflies. As she wandered through the garden, she encountered a wise old owl who revealed to her the secrets of the forest. From that day forward, Princess Lily's adventures in the enchanted forest became legendary throughout the kingdom.",
+
+  "In a bustling city nestled between towering skyscrapers and bustling streets, there was a quaint café known as 'Sunshine Brews.' Every morning, the aroma of freshly brewed coffee wafted through the air, drawing in locals and tourists alike. The café was a haven of warmth and comfort, with cozy nooks for reading and chatting with friends. It was here that Ella, a young aspiring writer, found inspiration for her stories. With a steaming cup of coffee in hand, she would sit by the window, watching the world go by as she penned her tales of adventure and romance."
 ];
 
 // this method convert the sentence into a letter inside a tag and load it to the screen
