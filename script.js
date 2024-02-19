@@ -6,8 +6,12 @@ let menu_music = document.getElementById("menu-music");
 let timer5s_music = document.getElementById("timer-5s-music");
 let gameOver_music = document.getElementById("game-over-music");
 
+let timeShow = document.getElementById("timer");
+  
+
 let ind;
 let count = 0;
+let timer_id,sec;
 
 let accuracy = 0,
   wpm = 0;
@@ -120,23 +124,27 @@ addEventListener("keyup", (event) => {
 //this method for starting the game
 let gameStart = () => {
   //initializing the values
+  clearInterval(timer_id);
+  sec=30;
+  timeShow.innerText = `${sec}s`;
+
   background_music.load();
   background_music.volume = 0.23;
   background_music.play();
-  isGameStart = true;
   count = 0;
   ind = -1;
+  isGameStart = true;
+
   getWords();
 
   let gameWindow = document.getElementById("game-window");
-  cursor = document.getElementById("cursor");
   let menu = document.getElementById("menu");
-  let text2 = document.getElementById("text2");
-  let text3 = document.getElementById("text3");
 
   menu.style.display = "none";
   gameWindow.style.display = "flex";
 };
+
+
 
 //this method for over the game
 let gameOver = () => {
@@ -179,10 +187,8 @@ let gameOver = () => {
 
 //this method count the second
 let timer = () => {
-  let timeShow = document.getElementById("timer");
-  let sec = 30;
-  timeShow.innerText = `${sec}s`;
-  let id = setInterval(() => {
+  
+    timer_id = setInterval(() => {
     sec--;
     timeShow.innerText = `${sec}s`;
     if (sec == 5) {
@@ -190,7 +196,7 @@ let timer = () => {
       timer5s_music.play();
     }
     if (sec == 0) {
-      clearInterval(id);
+      clearInterval(timer_id);
       gameOver();
     }
   }, 1000);
