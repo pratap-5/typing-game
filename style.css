@@ -81,7 +81,7 @@ body {
   transition: 0.3s;
   padding: 0.2rem 2rem;
   text-align: center;
-  text-shadow: 0 0 5px #000000;
+  text-shadow: 0 0 5px #000000; 
 }
 .menu-items:hover {
   color: rgb(255, 102, 0);

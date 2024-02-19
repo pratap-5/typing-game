@@ -1,3 +1,11 @@
+let background_music = document.getElementById("background-music");
+let correct_music = document.getElementById("correct-music");
+let typing_music = document.getElementById("typing-music");
+let back_music = document.getElementById("back-music");
+let menu_music = document.getElementById("menu-music");
+let timer5s_music = document.getElementById("timer-5s-music");
+let gameOver_music = document.getElementById("game-over-music");
+
 let ind;
 let count = 0;
 
@@ -18,7 +26,7 @@ let sentences = [
 
   "Once upon a time, in a faraway kingdom, there lived a young princess named Lily. She had a kind heart and a curious spirit. One day, while exploring the enchanted forest near the castle, Lily stumbled upon a hidden pathway. Intrigued, she followed it deeper into the woods, where she discovered a magical garden filled with vibrant flowers and sparkling butterflies. As she wandered through the garden, she encountered a wise old owl who revealed to her the secrets of the forest. From that day forward, Princess Lily's adventures in the enchanted forest became legendary throughout the kingdom.",
 
-  "In a bustling city nestled between towering skyscrapers and bustling streets, there was a quaint café known as 'Sunshine Brews.' Every morning, the aroma of freshly brewed coffee wafted through the air, drawing in locals and tourists alike. The café was a haven of warmth and comfort, with cozy nooks for reading and chatting with friends. It was here that Ella, a young aspiring writer, found inspiration for her stories. With a steaming cup of coffee in hand, she would sit by the window, watching the world go by as she penned her tales of adventure and romance."
+  "In a bustling city nestled between towering skyscrapers and bustling streets, there was a quaint café known as 'Sunshine Brews.' Every morning, the aroma of freshly brewed coffee wafted through the air, drawing in locals and tourists alike. The café was a haven of warmth and comfort, with cozy nooks for reading and chatting with friends. It was here that Ella, a young aspiring writer, found inspiration for her stories. With a steaming cup of coffee in hand, she would sit by the window, watching the world go by as she penned her tales of adventure and romance.",
 ];
 
 // this method convert the sentence into a letter inside a tag and load it to the screen
@@ -43,6 +51,8 @@ checkLetter = (inputLetter) => {
 
     if (inputLetter === "Backspace") {
       if (ind >= 0) {
+        back_music.load();
+        back_music.play();
         spans[ind].style.color = "#acabab";
         typedWords = typedWords.slice(0, ind);
 
@@ -52,11 +62,16 @@ checkLetter = (inputLetter) => {
     } else if (currentLetter === inputLetter) {
       ind++;
       typedWords += inputLetter;
-
+      correct_music.load();
+      correct_music.play();
       updateCursorPosition();
       spans[ind].style.color = "#f7e200";
     } else {
       ind++;
+
+      typing_music.load();
+      typing_music.play();
+
       updateCursorPosition();
       spans[ind].style.color = "#ff0045";
     }
@@ -105,6 +120,9 @@ addEventListener("keyup", (event) => {
 //this method for starting the game
 let gameStart = () => {
   //initializing the values
+  background_music.load();
+  background_music.volume = 0.23;
+  background_music.play();
   isGameStart = true;
   count = 0;
   ind = -1;
@@ -116,14 +134,20 @@ let gameStart = () => {
   let text2 = document.getElementById("text2");
   let text3 = document.getElementById("text3");
 
-  text2.setAttribute("id", "text2");
-  text3.setAttribute("id", "text3");
   menu.style.display = "none";
   gameWindow.style.display = "flex";
 };
 
 //this method for over the game
 let gameOver = () => {
+  background_music.pause();
+
+  gameOver_music.load();
+  gameOver_music.play();
+
+  menu_music.load();
+  menu_music.play();
+
   isGameStart = false;
 
   let gameWindow = document.getElementById("game-window");
@@ -149,6 +173,8 @@ let gameOver = () => {
   actualWord = [];
   text2.onclick = null;
   text3.onclick = null;
+  text2.classList.remove("menu-items");
+  text3.classList.remove("menu-items");
 };
 
 //this method count the second
@@ -159,6 +185,10 @@ let timer = () => {
   let id = setInterval(() => {
     sec--;
     timeShow.innerText = `${sec}s`;
+    if (sec == 5) {
+      timer5s_music.load();
+      timer5s_music.play();
+    }
     if (sec == 0) {
       clearInterval(id);
       gameOver();
@@ -168,6 +198,7 @@ let timer = () => {
 
 let getResults = () => {
   let words = "";
+
   for (let i = 0; i <= ind; i++) {
     words += sentence[i];
   }
@@ -179,8 +210,14 @@ let getResults = () => {
       accuracy++;
     }
   }
+
+  if (writtenWord[writtenWord.length - 1].length < 1) {
+    //it remove the empty string at last index
+    accuracy--;
+  }
+
   wpm =
-    actualWord[actualWord.length - 1].length > 1
+    actualWord[actualWord.length - 1].length > 1 //it remove the empty string at last index
       ? actualWord.length
       : actualWord.length - 1;
 
